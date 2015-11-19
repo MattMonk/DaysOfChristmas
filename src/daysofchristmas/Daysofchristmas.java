@@ -34,7 +34,7 @@ public class Daysofchristmas
 
     public static void main(String[] args)
     {
-        DaysOfChristmas doc = new DaysOfChristmas();
+        Daysofchristmas doc = new Daysofchristmas();
         String[] testArray = new String[3];
         doc.arrayPopulater(testArray);
         doc.arrayPrinter(testArray);
