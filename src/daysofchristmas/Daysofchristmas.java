@@ -2,6 +2,7 @@ package daysofchristmas;
 
 public class Daysofchristmas
 {
+    private static String[] christmasArray = {"a Partridge in a Pear Tree", "Two Turtle Doves", "Three French Hens", "Four Calling Birds", "Five Gold Rings", "Six Geese a-Laying", "Seven Swans a-Swimming", "Eight Maids a-Milking", "Nine Ladies Dancing", "Ten Lords a-Leaping", "Eleven Pipers Piping", "Twelve Drummers Drumming"};
     
     public String[] arrayPopulater(String[] arrayForPopulation)
     {
@@ -34,14 +35,29 @@ public class Daysofchristmas
         }
         return reversedArray;
     }
+    
+    public void daysOfChristmas(String[] christmasArray)
+    {
+        String[] backwardsChristmas = arrayReverser(christmasArray);
+        for(int i=0;i<christmasArray.length;i++)
+        {
+            System.out.println("My true love gave to me:"); //need to say which day it is.
+            for(int k=i;k>-1;)
+            {
+                System.out.println(christmasArray[k]);
+                k=k-1;
+            }
+        }
+    }
 
     public static void main(String[] args)
     {
         Daysofchristmas doc = new Daysofchristmas();
         String[] testArray = new String[3];
         doc.arrayPopulater(testArray);
-        doc.arrayPrinter(testArray);
-        doc.arrayPrinter(doc.arrayReverser(testArray)); //prints the result of array reverser
+        //doc.arrayPrinter(testArray);
+        //doc.arrayPrinter(doc.arrayReverser(testArray)); //prints the result of array reverser
+        doc.daysOfChristmas(christmasArray);
     }
 
 }
