@@ -1,60 +1,54 @@
 package daysofchristmas;
 
+import java.util.concurrent.TimeUnit;
+
 public class Daysofchristmas
 {
-    private static String[] christmasArray = {"a Partridge in a Pear Tree", "Two Turtle Doves", "Three French Hens", "Four Calling Birds", "Five Gold Rings", "Six Geese a-Laying", "Seven Swans a-Swimming", "Eight Maids a-Milking", "Nine Ladies Dancing", "Ten Lords a-Leaping", "Eleven Pipers Piping", "Twelve Drummers Drumming"};
+    private static String[] christmasArray = {"a Partridge in a Pear Tree", "Two Turtle Doves", "Three French Hens", "Four Calling Birds", "FIVE GOOOOLD RINGS", "Six Geese a-Laying", "Seven Swans a-Swimming", "Eight Maids a-Milking", "Nine Ladies Dancing", "Ten Lords a-Leaping", "Eleven Pipers Piping", "Twelve Drummers Drumming"};
     private static String[] daysOfChristmas = {"1st", "2nd", "3rd"};
-    
-    public String[] arrayPopulater(String[] arrayForPopulation)
-    {
-        //Populates the array by adding "Hi" then a number starting from 0 to give unique data for each position in the array.
-        for(int i=0;i<arrayForPopulation.length;i++)
-        {
-            String toArray="hi"+i;
-            arrayForPopulation[i]=toArray;
-        }
-        return arrayForPopulation;
-    }
-    
-    public void arrayPrinter(String[] printingArray) //self explanatory
-    {
-        for(int i=0;i<printingArray.length;i++)
-        {
-            System.out.println(printingArray[i]);
-        }
-    }
-    
-    public String[] arrayReverser(String[] originalArray)
-    {
-        int arrayLength = originalArray.length;
-        int arrayPosition = arrayLength-1;
-        String[] reversedArray = new String[arrayLength]; //new reversed array
-        for(int i=0;i<arrayLength;i++)
-        {
-            //first pos in reversedArray = last pos in originalArray-- continues doing his to he end
-            reversedArray[i] = originalArray[arrayPosition-i]; //has to be arrayPostion as array length is 3 but max array index is 2.
-        }
-        return reversedArray;
-    }
-    
+
     public void daysOfChristmas(String[] christmasArray, String[] dayofChristmas)
     {
         
         for(int i=0;i<christmasArray.length;i++)
         {
-            if(i<3)
+            if(i<3) //Use an array for first three values because they are awkward
             {
-                System.out.println("On the "+dayofChristmas[i]+" day of Christmas my true love gave to me:");
+                System.out.println("\nOn the "+dayofChristmas[i]+" day of Christmas my true love gave to me:");
             }
-            else //fix this, it goes 3rd then 3th...
+            else 
             {
-                System.out.println("On the "+i+"th day of Christmas my true love gave to me:");
+                int day=i+1; //because i starts at 0 the day would be off by one
+                System.out.println("\nOn the "+day+"th day of Christmas my true love gave to me:");
             }
             
-            for(int k=i;k>-1;)
+            for(int k=i;k>=0;)//Prints out the values in the array in decreasing order
             {
-                System.out.println(christmasArray[k]);
+                if(k==4)
+                {
+                    System.out.println("\n\n"+christmasArray[k]+"\n\n");
+                    try
+                    {
+                        TimeUnit.SECONDS.sleep(1);
+                    }
+                    catch(InterruptedException e)
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    System.out.println(christmasArray[k]);
+                }
                 k=k-1;
+            }
+            try
+            {
+                TimeUnit.SECONDS.sleep(2);
+            }
+            catch(InterruptedException e)
+            {
+                
             }
         }
     }
@@ -62,10 +56,6 @@ public class Daysofchristmas
     public static void main(String[] args)
     {
         Daysofchristmas doc = new Daysofchristmas();
-        String[] testArray = new String[3];
-        doc.arrayPopulater(testArray);
-        //doc.arrayPrinter(testArray);
-        //doc.arrayPrinter(doc.arrayReverser(testArray)); //prints the result of array reverser
         doc.daysOfChristmas(christmasArray, daysOfChristmas);
     }
 
